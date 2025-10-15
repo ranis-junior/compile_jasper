@@ -1,0 +1,242 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="main_report_1" language="java" columnCount="1" pageWidth="595" pageHeight="842" orientation="Landscape" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="83274122-6ee9-4f67-a5e4-db390ae26f5e">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="psicologia"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="id_patient" forPrompting="false" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_DIR" forPrompting="false" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[SELECT
+	PS.NAME AS PSY_NAME,
+	PS.CRP,
+	PT.NAME AS PATIENT_NAME,
+	PT.GENDER AS PATIENT_GENDER,
+	PT.MOTHER,
+	PT.MOTHER_PROFESSION,
+	PT.FATHER,
+	PT.FATHER_PROFESSION,
+	TO_CHAR(PT.BIRTH_DATE, 'DD/MM/YYYY') AS PATIENT_BIRTH_DATE,
+	PR.DEMAND_DESCRIPTION,
+	PR.INSTRUMENTS_USED
+FROM
+	PSYCHOLOGISTS PS
+	INNER JOIN PATIENTS PT ON PT.ID_PSYCHOLOGIST = PS.ID
+	INNER JOIN PATIENT_RECORDS PR ON PR.ID_PATIENT = PT.ID
+WHERE
+	PT.ID = $P{id_patient}]]></query>
+	<field name="psy_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="psy_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="psy_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="psychologists"/>
+	</field>
+	<field name="crp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="crp"/>
+		<property name="com.jaspersoft.studio.field.label" value="crp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="psychologists"/>
+	</field>
+	<field name="patient_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patients"/>
+	</field>
+	<field name="patient_gender" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_gender"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_gender"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patients"/>
+	</field>
+	<field name="mother" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mother"/>
+		<property name="com.jaspersoft.studio.field.label" value="mother"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patients"/>
+	</field>
+	<field name="mother_profession" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mother_profession"/>
+		<property name="com.jaspersoft.studio.field.label" value="mother_profession"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patients"/>
+	</field>
+	<field name="father" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="father"/>
+		<property name="com.jaspersoft.studio.field.label" value="father"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patients"/>
+	</field>
+	<field name="father_profession" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="father_profession"/>
+		<property name="com.jaspersoft.studio.field.label" value="father_profession"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patients"/>
+	</field>
+	<field name="patient_birth_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_birth_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_birth_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patient"/>
+	</field>
+	<field name="demand_description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="demand_description"/>
+		<property name="com.jaspersoft.studio.field.label" value="demand_description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patient_records"/>
+	</field>
+	<field name="instruments_used" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="instruments_used"/>
+		<property name="com.jaspersoft.studio.field.label" value="instruments_used"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patient_records"/>
+	</field>
+	<background height="680" splitType="Stretch">
+		<element kind="image" uuid="fa58f352-df84-4bcd-90c3-58207210ab2f" x="0" y="0" width="595" height="680">
+			<expression><![CDATA[$P{IMAGE_DIR} + "integrar_background.jpg"]]></expression>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</background>
+	<pageHeader height="81">
+		<element kind="rectangle" uuid="bd260ce1-b5b9-4118-ab2f-d20971075255" mode="Opaque" x="0" y="0" width="595" height="81" backcolor="#FF99CC"/>
+		<element kind="frame" uuid="401ba27d-48cf-47ab-bbfe-a062069ff443" x="0" y="0" width="595" height="81">
+			<element kind="image" uuid="df8cf08c-9f07-480a-ab14-3401beafdb85" x="5" y="5" width="90" height="70">
+				<expression><![CDATA[$P{IMAGE_DIR} + "integrar_logo.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			</element>
+			<element kind="staticText" uuid="9b1d3871-a972-4319-a2be-653834f7057b" x="147" y="20" width="300" height="20" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[INTEGRAR - CLÍNICA MULTIDISCIPLINAR]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a9fb68dc-7111-44a2-87e1-35021df41fd1" x="147" y="40" width="300" height="20" forecolor="#FFFFFF" fontSize="12.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Especialistas em Neurodiversidade]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</pageHeader>
+	<columnHeader height="20">
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</columnHeader>
+	<detail>
+		<band height="660">
+			<element kind="staticText" uuid="c2fa366d-7874-4888-b9c3-a33e1a6c5b86" x="0" y="0" width="595" height="20" fontSize="14.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[RELATÓRIO DE AVALIAÇÃO COMPORTAMENTAL]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="32c1c0f8-a095-4ea6-b422-06885b58f015" x="47" y="20" width="500" height="20" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
+				<text><![CDATA[1. Identificação: ]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.firstLineIndent" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="c4487af6-9c5f-48cc-b163-4f30c7676fe6" x="47" y="40" width="500" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Autora: </b>"  + $F{psy_name} + ", CRP (" + $F{crp} + ") – Psicóloga Clínica, Especialista em Análise do Comportamento Aplicada (ABA). "]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="f83d90f5-4725-4b79-8f04-b3d12d538003" positionType="Float" x="47" y="60" width="500" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Interessados: </b>Família/Médico." ]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="381c5107-ff36-4fe4-bb13-dee505cd6f26" positionType="Float" x="47" y="80" width="500" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Finalidade: </b>Identificar o nível de desenvolvimento da criança para elaboração do PTI. "]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="26f41850-d2cb-40b4-98ef-ea75d7b1ad60" positionType="Float" x="47" y="100" width="500" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Data da Avaliação: </b>"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="f172a074-7a28-4891-b433-5d3e0a0db2d3" positionType="Float" x="47" y="120" width="500" height="20" fontSize="12.0" bold="true" italic="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
+				<text><![CDATA[1.1 Identificação do paciente: ]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.firstLineIndent" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="4b93fb3e-1aba-4f2e-a137-bd12077d4f1b" positionType="Float" x="47" y="160" width="250" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Mãe: </b>"  + $F{mother}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="f2a54849-3938-4ebc-816e-1ac3ebb4d668" positionType="Float" x="47" y="180" width="250" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Pai: </b>" + $F{father}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="2a2bba74-156f-40c5-a867-8bb9f6f2f4fa" positionType="Float" x="47" y="140" width="500" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" vTextAlign="Middle">
+				<expression><![CDATA["<b>Nome: </b>"  + $F{patient_name}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="a3eae45f-7a66-46bc-8643-9f9fb6b960a3" positionType="Float" x="47" y="200" width="250" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Sexo: </b>" +  ($F{patient_gender}.equals("male")  ?  "Masculino"  : "Feminino")]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="1f32e715-d169-4e12-bf42-2d4cbe867bc4" positionType="Float" x="297" y="160" width="250" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Profissão: </b>"  + $F{mother_profession}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="a7bd31a1-b74f-4e54-94b2-4a9dfc4a6160" positionType="Float" x="297" y="180" width="250" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Profissão: </b>" + $F{father_profession}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="ea84f512-13e3-4ca2-b4e6-4190458938a0" positionType="Float" x="297" y="200" width="250" height="20" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Middle">
+				<expression><![CDATA["<b>Data de Nascimento: </b>" + $F{patient_birth_date}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="aedec993-bc7b-4cbd-a8a3-f251bd27aff4" positionType="Float" x="47" y="239" width="500" height="20" fontSize="12.0" bold="true" italic="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
+				<text><![CDATA[2. Descrição da demanda: ]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.firstLineIndent" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="a136ac0e-1c33-4ba7-bceb-fed3902a37ee" positionType="Float" stretchType="ContainerHeight" x="47" y="259" width="500" height="100" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Top">
+				<paragraph firstLineIndent="35"/>
+				<expression><![CDATA[$F{demand_description}]]></expression>
+				<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="ced4b495-2098-472b-af85-ba344973d058" positionType="Float" stretchType="ContainerHeight" x="47" y="382" width="500" height="100" markup="html" fontSize="12.0" textAdjust="StretchHeight" hTextAlign="Justified" vTextAlign="Top">
+				<paragraph firstLineIndent="35"/>
+				<expression><![CDATA[$F{instruments_used}]]></expression>
+				<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="6ac9201d-06ef-4c5e-8fab-e4e6bce623f4" positionType="Float" x="47" y="362" width="500" height="20" fontSize="12.0" bold="true" italic="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
+				<text><![CDATA[3. Instrumentos utilizados: ]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.firstLineIndent" value="pixel"/>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+	<pageFooter height="81">
+		<element kind="rectangle" uuid="4253ee6c-b303-4056-92cf-5d7c6e15e32c" mode="Opaque" x="0" y="0" width="595" height="81" backcolor="#FF99CC"/>
+		<element kind="staticText" uuid="504658f7-20ae-4362-8b59-9e79118fd2b2" x="32" y="10" width="530" height="15">
+			<text><![CDATA[R. João Batista de Toledo esq. com Av. Vicente de Paula, Qd 15 Lt 01 – Centro – Ap. de Goiânia – CEP: 74.9800-060]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="af7ed301-b80b-451c-81ab-5fedd3024fed" x="32" y="25" width="530" height="15">
+			<text><![CDATA[@clinicaintegrarunidade2]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="6f8c226d-cfc6-43ce-9741-09e476f03282" x="32" y="40" width="530" height="15">
+			<text><![CDATA[clinicaintegrarapgyn@gmail.com]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="6dacce99-6f84-4e5c-9c78-931910f7c349" x="32" y="55" width="530" height="15">
+			<text><![CDATA[(62) 99313-0024]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</pageFooter>
+</jasperReport>

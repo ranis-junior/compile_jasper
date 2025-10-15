@@ -1,0 +1,69 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Blank_A4" language="java" columnCount="1" pageWidth="530" pageHeight="842" orientation="Landscape" columnWidth="530" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9e88948d-3708-48ef-9276-44a4ac1e8fc0">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="psicologia"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="id_patient" class="java.lang.Integer"/>
+	<query language="sql"><![CDATA[select id.name           as nome_coluna,
+       iv.standard_score as valor
+from idadi_domains id
+         inner join idadi_values iv on iv.id_domain = id.id
+         inner join idadi on idadi.id = iv.id_idadi
+where idadi.id_patient = $P{id_patient} ]]></query>
+	<field name="nome_coluna" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_coluna"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_coluna"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="idadi_domains"/>
+	</field>
+	<field name="valor" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="valor"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="idadi_values"/>
+	</field>
+	<background splitType="Stretch"/>
+	<summary height="250">
+		<element kind="chart" chartType="bar" uuid="b72dbe91-7377-4bd1-a2a8-b78ba5099f2f" x="0" y="0" width="530" height="250" showLegend="false" evaluationTime="Report" renderType="image">
+			<dataset kind="category">
+				<series>
+					<seriesExpression><![CDATA["SERIES 1"]]></seriesExpression>
+					<categoryExpression><![CDATA[$F{nome_coluna}]]></categoryExpression>
+					<valueExpression><![CDATA[$F{valor}]]></valueExpression>
+					<labelExpression><![CDATA[$F{nome_coluna}]]></labelExpression>
+					<itemHyperlink linkType="None" linkTarget="Self"/>
+				</series>
+			</dataset>
+			<plot labelRotation="-45.0" categoryAxisLabelColor="#000000" categoryAxisTickLabelColor="#000000" categoryAxisTickLabelMask="" categoryAxisLineColor="#000000" valueAxisLabelColor="#000000" valueAxisTickLabelColor="#000000" valueAxisLineColor="#000000" categoryAxisTickLabelRotation="-45.0">
+				<rangeAxisMaxValueExpression><![CDATA[$F{valor} > 135 ? $F{valor} + 15 :  135]]></rangeAxisMaxValueExpression>
+				<itemLabel/>
+				<seriesColor order="0" color="#0792E4"/>
+			</plot>
+			<property name="net.sf.jasperreports.customizer.0.startValue" value="85.0"/>
+			<property name="net.sf.jasperreports.customizer.0.endValue" value="86.0"/>
+			<property name="net.sf.jasperreports.customizer.0.color" value="#FF0000"/>
+			<property name="net.sf.jasperreports.customizer.class.0" value="net.sf.jasperreports.customizers.marker.RangeIntervalMarkerCustomizer"/>
+			<property name="net.sf.jasperreports.customizer.1.startValue" value="115.0"/>
+			<property name="net.sf.jasperreports.customizer.1.endValue" value="116.0"/>
+			<property name="net.sf.jasperreports.customizer.1.color" value="#1FFF48"/>
+			<property name="net.sf.jasperreports.customizer.class.1" value="net.sf.jasperreports.customizers.marker.RangeIntervalMarkerCustomizer"/>
+			<property name="net.sf.jasperreports.customizer.1.label" value="Típico"/>
+			<property name="net.sf.jasperreports.customizer.0.layer" value="foreground"/>
+			<property name="net.sf.jasperreports.customizer.0.label" value="Alerta de Atraso"/>
+			<property name="net.sf.jasperreports.customizer.0.labelAnchor" value="center"/>
+			<property name="net.sf.jasperreports.customizer.0.labelTextAnchor" value="bottomCenter"/>
+			<property name="net.sf.jasperreports.customizer.1.labelAnchor" value="center"/>
+			<property name="net.sf.jasperreports.customizer.1.labelTextAnchor" value="bottomCenter"/>
+			<property name="net.sf.jasperreports.customizer.1.layer" value="foreground"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</summary>
+</jasperReport>

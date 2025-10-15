@@ -1,0 +1,98 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="final_report" language="java" pageWidth="595" pageHeight="842" sectionType="Part" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="d2716064-8ae4-40cf-a575-33afba400e3a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="psicologia"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<property name="com.jaspersoft.studio.book.group.cover.header" value="Cover and Table of Contents"/>
+	<property name="com.jaspersoft.studio.book.group.cover.footer" value="Backcover"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="id_patient" forPrompting="false" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_DIR" forPrompting="false" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" forPrompting="false" class="java.lang.String"/>
+	<parameter name="COMPILED_REPORT_DIR" forPrompting="false" class="java.lang.String"/>
+	<query language="sql"><![CDATA[select 1 as dummy]]></query>
+	<field name="dummy" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="dummy"/>
+		<property name="com.jaspersoft.studio.field.label" value="dummy"/>
+	</field>
+	<group name="cover">
+		<groupHeader>
+			<part uuid="7aed05b9-1301-4a53-b47e-34289560bc0c">
+				<component kind="subreportPart">
+					<expression><![CDATA[$P{COMPILED_REPORT_DIR} + "final_report_cover.jasper"]]></expression>
+					<parameter name="IMAGE_DIR">
+						<expression><![CDATA[$P{IMAGE_DIR}]]></expression>
+					</parameter>
+					<parameter name="id_patient">
+						<expression><![CDATA[$P{id_patient}]]></expression>
+					</parameter>
+					<parameter name="REPORT_CONNECTION">
+						<expression><![CDATA[$P{REPORT_CONNECTION}]]></expression>
+					</parameter>
+				</component>
+			</part>
+		</groupHeader>
+	</group>
+	<detail>
+		<part uuid="d75e6863-0cc8-468d-bc09-54bd7be6f5b0">
+			<component kind="subreportPart">
+				<expression><![CDATA[$P{COMPILED_REPORT_DIR} + "main_report_1.jasper"]]></expression>
+				<parameter name="id_patient">
+					<expression><![CDATA[$P{id_patient}]]></expression>
+				</parameter>
+				<parameter name="REPORT_CONNECTION">
+					<expression><![CDATA[$P{REPORT_CONNECTION}]]></expression>
+				</parameter>
+				<parameter name="IMAGE_DIR">
+					<expression><![CDATA[$P{IMAGE_DIR}]]></expression>
+				</parameter>
+			</component>
+		</part>
+		<part uuid="c3177bf5-f32c-40cd-bb87-58bf6f50c58c">
+			<component kind="subreportPart">
+				<expression><![CDATA[$P{COMPILED_REPORT_DIR} + "main_report_2.jasper"]]></expression>
+				<parameter name="REPORT_CONNECTION">
+					<expression><![CDATA[$P{REPORT_CONNECTION}]]></expression>
+				</parameter>
+				<parameter name="id_patient">
+					<expression><![CDATA[$P{id_patient}]]></expression>
+				</parameter>
+				<parameter name="IMAGE_DIR">
+					<expression><![CDATA[$P{IMAGE_DIR}]]></expression>
+				</parameter>
+			</component>
+		</part>
+		<part uuid="bcaf543f-66de-46e4-bf55-58bc39666f5f">
+			<component kind="subreportPart">
+				<expression><![CDATA[$P{COMPILED_REPORT_DIR} + "main_report_3.jasper"]]></expression>
+				<parameter name="REPORT_CONNECTION">
+					<expression><![CDATA[$P{REPORT_CONNECTION}]]></expression>
+				</parameter>
+				<parameter name="id_patient">
+					<expression><![CDATA[$P{id_patient}]]></expression>
+				</parameter>
+				<parameter name="IMAGE_DIR">
+					<expression><![CDATA[$P{IMAGE_DIR}]]></expression>
+				</parameter>
+				<parameter name="SUBREPORT_DIR">
+					<expression><![CDATA[$P{SUBREPORT_DIR}]]></expression>
+				</parameter>
+			</component>
+		</part>
+		<part uuid="0901e89a-ece6-48fe-a66b-22f55b896cd3">
+			<component kind="subreportPart">
+				<expression><![CDATA[$P{COMPILED_REPORT_DIR} + "main_report_4.jasper"]]></expression>
+				<parameter name="REPORT_CONNECTION">
+					<expression><![CDATA[$P{REPORT_CONNECTION}]]></expression>
+				</parameter>
+				<parameter name="id_patient">
+					<expression><![CDATA[$P{id_patient}]]></expression>
+				</parameter>
+				<parameter name="IMAGE_DIR">
+					<expression><![CDATA[$P{IMAGE_DIR}]]></expression>
+				</parameter>
+			</component>
+		</part>
+	</detail>
+</jasperReport>

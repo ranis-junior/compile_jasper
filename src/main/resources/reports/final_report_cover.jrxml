@@ -1,0 +1,65 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="typewriter_book_cover" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c50b24eb-eb33-413f-8e75-e7e20a5341fd">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="psicologia"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="633"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="353"/>
+	<parameter name="IMAGE_DIR" class="java.lang.String"/>
+	<parameter name="id_patient" forPrompting="false" class="java.lang.Integer"/>
+	<query language="sql"><![CDATA[select pt.name as patient_name, psy.name as psychologist_name, psy.crp
+from patients pt
+         inner join psychologists psy on pt.id_psychologist = psy.id
+    and pt.id = $P{id_patient}]]></query>
+	<field name="patient_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patients"/>
+	</field>
+	<field name="psychologist_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="psychologist_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="psychologist_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="psychologists"/>
+	</field>
+	<field name="crp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="crp"/>
+		<property name="com.jaspersoft.studio.field.label" value="crp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="psychologists"/>
+	</field>
+	<background height="841">
+		<element kind="image" uuid="7974dccf-0251-4222-aa17-9e2693e5add7" stretchType="ContainerHeight" x="0" y="0" width="595" height="841">
+			<expression><![CDATA[$P{IMAGE_DIR} + "cover_background.png"]]></expression>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</background>
+	<detail>
+		<band height="841">
+			<element kind="staticText" uuid="35228eb5-95a2-4524-b15c-0e424ad714f0" x="0" y="257" width="595" height="53" fontName="Fairwater Script Light" fontSize="31.0" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Minhas Evoluções]]></text>
+			</element>
+			<element kind="frame" uuid="b4de0691-ba5e-411d-ae27-cc424c92619c" positionType="Float" stretchType="ContainerHeight" x="97" y="530" width="400" height="200">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<element kind="textField" uuid="72cb1cb4-e62e-43af-9198-83de1adaeff3" x="0" y="0" width="400" height="30" fontName="Fairwater Script Light" fontSize="21.0" hTextAlign="Center" vTextAlign="Middle">
+					<expression><![CDATA[$F{patient_name}]]></expression>
+				</element>
+				<element kind="textField" uuid="7d41d94e-064e-4aa1-a104-df419d148529" positionType="Float" stretchType="ContainerHeight" x="0" y="30" width="400" height="30" fontName="Fairwater Script Light" fontSize="21.0" textAdjust="StretchHeight" printWhenDetailOverflows="true" hTextAlign="Center" vTextAlign="Middle">
+					<expression><![CDATA[$F{psychologist_name} + " / Psicóloga"]]></expression>
+				</element>
+				<element kind="textField" uuid="9f14c895-ce61-4e96-933a-f4da23471d88" positionType="Float" stretchType="ContainerHeight" x="0" y="60" width="400" height="30" fontName="Fairwater Script Light" fontSize="21.0" hTextAlign="Center" vTextAlign="Middle">
+					<expression><![CDATA["CPR " + $F{crp}]]></expression>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</element>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+</jasperReport>
