@@ -55,24 +55,6 @@
     </dependencies>
     <build>
         <plugins>
-            <!--            <plugin>-->
-            <!--                <groupId>org.springframework.boot</groupId>-->
-            <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <goals>-->
-            <!--                            <goal>repackage</goal>-->
-            <!--                        </goals>-->
-            <!--                        <configuration>-->
-            <!--                            <classifier>spring-boot</classifier>-->
-            <!--                            <mainClass>-->
-            <!--                                com.generator.JasperReportToPDF-->
-            <!--                            </mainClass>-->
-            <!--                        </configuration>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
-            <!-- outro plugin para compilar funcionando -->
             <plugin>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.6.0</version>
