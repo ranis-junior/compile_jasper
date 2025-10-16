@@ -13,6 +13,14 @@ COPY .mvn .mvn
 # Copia o código-fonte
 COPY src src
 
+# Instala o jar da fonte
+RUN ./mvnw install:install-file \
+         -Dfile=src/main/resources/reports/fair_font.jar \
+         -DgroupId=local.jasperFontOverrides \
+         -DartifactId=local.jasperFontOverrides \
+         -Dversion=1.0 \
+         -Dpackaging=jar
+
 # Compila e empacota o projeto
 RUN ./mvnw clean package -DskipTests
 
